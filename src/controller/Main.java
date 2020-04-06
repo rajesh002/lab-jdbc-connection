@@ -14,7 +14,7 @@ public class Main {
 	
 	System.out.println("Using Getconnection method");
 	if(con!=null)
-		System.out.println("Connection Established");
+		System.out.println("======Connection Established=========\n");
 	else
 		System.out.println("Check your Connection");
 
@@ -22,7 +22,7 @@ public class Main {
 	Properties prop=cm.loadPropertiesFile();
 	System.out.println("Using Properties file");
 	if(prop!=null)
-		System.out.println("Connection Established");
+		System.out.println("===========Connection Established=========");
 	else
 		System.out.println("Check your Connection");
 	}
