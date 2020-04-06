@@ -3,15 +3,20 @@ package utility;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionManager {
 	public static Connection getConnection() throws Exception {
-		Properties prop=loadPropertiesFile();
-		Class.forName((String)prop.get("driver"));
+		Properties prop=null;
 		Connection con=null;
-		con=DriverManager.getConnection((String)prop.get("url"),(String)prop.get("username"),(String)prop.get("password"));
+		prop=loadPropertiesFile();
+		final String driver=prop.getProperty("driver");
+		final String url=prop.getProperty("url");
+		final String username=prop.getProperty("username");
+		final String password=prop.getProperty("password");
+		Class.forName(driver);
+		
+		con=DriverManager.getConnection(url,username,password);
 		return con;
 		
 	}
