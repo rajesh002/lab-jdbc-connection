@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionManager {
-	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.OracleDriver");
+	public static Connection getConnection() throws Exception {
+		Properties prop=loadPropertiesFile();
+		Class.forName((String)prop.get("driver"));
 		Connection con=null;
-		con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","SYSTEM","Rajesh123");
+		con=DriverManager.getConnection((String)prop.get("url"),(String)prop.get("username"),(String)prop.get("password"));
 		return con;
 		
 	}
